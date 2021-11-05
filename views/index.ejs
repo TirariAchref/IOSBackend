@@ -1,0 +1,61 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MY APP</title>
+  </head>
+
+  <body>
+    <h1>ADD Client</h1>
+
+    <form action="/user" method="POST">
+    <input type="text" placeholder="nom" name="nom">
+    <input type="text" placeholder="prenom" name="prenom">
+    <input type="text" placeholder="email" name="email">
+    <input type="text" placeholder="password" name="password">
+    <input type="text" placeholder="phone" name="phone">
+    <input type="text" placeholder="categorieclient" name="categorieclient">
+    <button type="submit">Submit</button>
+  </form>
+  <div>
+    <h2>Update Client</h2>
+    <p>
+    
+    </p>
+    <button id="update-button">Update Client</button>
+  </div>
+  <div>
+    <h2>Remove User!</h2>
+    
+    <button id="delete-button">Delete User</button>
+    <div id="message"> </div>
+  </div>
+
+  <h2> Quotes </h2>
+
+  <ul class="user">
+    <!-- Loop through quotes -->
+    <% for(var i = 0; i < users.length; i++) {%>
+      <li class="user">
+
+        <span>  <b>nom :</b> <%= users[i].nom %></span>
+        <b>prenom :</b> 
+        <span><%= users[i].prenom %></span>
+        <b>email :</b>
+        <span><%= users[i].email %></span>
+        <b>password :</b>
+        <span><%= users[i].password %></span>
+        <b>phone :</b>
+        <span><%= users[i].phone %></span>
+        <b>categorieclient :</b>
+        <span><%= users[i].categorieclient %></span>
+      </li>
+    <% } %>
+  </ul>
+
+
+  <script src="/main.js"></script>
+
+  </body>
+</html>
