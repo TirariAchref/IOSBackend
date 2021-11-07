@@ -1,5 +1,5 @@
 
-//UPDATE
+//UPDATE User
 const update = document.querySelector('#update-button') 
 
 update.addEventListener('click', _ => {
@@ -7,7 +7,7 @@ update.addEventListener('click', _ => {
       method: 'put',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        nom: 'sf',
+        nom: 'dbd',
         prenom: 'prenom',
         email: 'email',
         password: 'password',
@@ -22,8 +22,9 @@ update.addEventListener('click', _ => {
         console.log(response)
       })
   })
+ 
 
-  //DELETE
+  //DELETE USER
   const messageDiv = document.querySelector('#message')
   const deleteButton = document.querySelector('#delete-button')
 
@@ -32,10 +33,11 @@ update.addEventListener('click', _ => {
       method: 'delete',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        nom: 'achef'
+        nom: 'dbd'
       })
     })
     .then(res => {
+          
         if (res.ok) return res.json()
       })
    .then(response => {

@@ -1,0 +1,54 @@
+<!-- reponse.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MY APP</title>
+  </head>
+
+  <body>
+    <button ><a href="question" >QUESTION</a></button>
+    <button ><a href="reponse" >REPONSE</a></button>
+    <button ><a href="messagerie" >MESSAGERIE</a></button>  
+
+<!-- Crud reponse -->
+  <h1>ADD reponse</h1>
+
+  <form action="/reponseinsert" method="POST">
+  <input type="text" placeholder="description" name="description">
+  <input type="text" placeholder="datecreation" name="datecreation">
+
+  <button type="submit">Submit</button>
+</form>
+<div>
+  <h2>Update reponse</h2>
+  <p>
+  
+  </p>
+  <button id="updatereponse">Update reponse</button>
+</div>
+<div>
+  <h2>Remove reponse!</h2>
+  
+  <button id="delete-reponse">Delete reponse</button>
+  <div id="messagereponse"> </div>
+</div>
+
+<h2> Quotes </h2>
+
+<ul class="reponse">
+  <!-- Loop through reponse -->
+  <% for(var i = 0; i < reponses.length; i++) {%>
+    <li class="reponse">
+
+      <span>  <b>description :</b> <%= reponses[i].description %></span>
+      <b>datecreation :</b> 
+      <span><%= reponses[i].datecreation %></span>
+    </li>
+  <% } %>
+</ul>
+  
+  <script src="/reponse.js"></script>
+
+  </body>
+</html>

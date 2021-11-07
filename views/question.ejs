@@ -1,0 +1,54 @@
+<!-- question.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MY APP</title>
+  </head>
+
+  <body>
+    
+    <button ><a href="question" >QUESTION</a></button>
+    <button ><a href="reponse" >REPONSE</a></button>
+    <button ><a href="messagerie" >MESSAGERIE</a></button>
+<!-- Crud Question -->
+  <h1>ADD question</h1>
+
+  <form action="/questioninsert" method="POST">
+  <input type="text" placeholder="description" name="description">
+  <input type="text" placeholder="datecreation" name="datecreation">
+
+  <button type="submit">Submit</button>
+</form>
+<div>
+  <h2>Update Question</h2>
+  <p>
+  
+  </p>
+  <button id="updatequestion">Update Question</button>
+</div>
+<div>
+  <h2>Remove Question!</h2>
+  
+  <button id="delete-question">Delete Question</button>
+  <div id="messagequestion"> </div>
+</div>
+
+<h2> Quotes </h2>
+
+<ul class="question">
+  <!-- Loop through quotes -->
+  <% for(var i = 0; i < questions.length; i++) {%>
+    <li class="question">
+
+      <span>  <b>description :</b> <%= questions[i].description %></span>
+      <b>datecreation :</b> 
+      <span><%= questions[i].datecreation %></span>
+    </li>
+  <% } %>
+</ul>
+  
+  <script src="/question.js"></script>
+
+  </body>
+</html>

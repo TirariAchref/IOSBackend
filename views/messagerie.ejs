@@ -1,0 +1,62 @@
+<!-- messagerie.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MY APP</title>
+  </head>
+
+  <body>
+    <button ><a href="question" >QUESTION</a></button>
+    <button ><a href="reponse" >REPONSE</a></button>
+    <button ><a href="messagerie" >MESSAGERIE</a></button>
+
+<!-- Crud messagerie -->
+  <h1>ADD messagerie</h1>
+
+  <form action="/messagerieinsert" method="POST">
+  <input type="text" placeholder="message" name="message">
+  <input type="text" placeholder="object" name="object">
+  <input type="text" placeholder="datecreation" name="datecreation">
+  <input type="text" placeholder="from" name="from">
+  
+
+
+  <button type="submit">Submit</button>
+</form>
+<div>
+  <h2>Update messagerie</h2>
+  <p>
+  
+  </p>
+  <button id="updatemessagerie">Update messagerie</button>
+</div>
+<div>
+  <h2>Remove messagerie!</h2>
+  
+  <button id="delete-messagerie">Delete messagerie</button>
+  <div id="messagemessagerie"> </div>
+</div>
+
+<h2> messagerie </h2>
+
+<ul class="messagerie">
+  <!-- Loop through messagerie -->
+  <% for(var i = 0; i < messageries.length; i++) {%>
+    <li class="messagerie">
+
+      <span>  <b>message :</b> <%= messageries[i].message %></span>
+      <b>object :</b> 
+      <span><%= messageries[i].object %></span>
+      <b>datecreation :</b> 
+      <span><%= messageries[i].datecreation %></span>
+      <b>from :</b> 
+      <span><%= messageries[i].from %></span>
+    </li>
+  <% } %>
+</ul>
+  
+  <script src="/messagerie.js"></script>
+
+  </body>
+</html>

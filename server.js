@@ -33,21 +33,21 @@ MongoClient.connect(connectionString, {
     
     
     const userCollection = db.collection('user')
- 
-  
-  
+  //list user
     app.get('/', (req, res) => {
       userCollection.find().toArray()
+      
           .then(results => {
-           // res.sendFile(__dirname + '/index.html')
+           
            res.render('index.ejs', { users : results })
+     
             console.log(results)
           })
           .catch(error => console.error(error))
         
       })
 
-   
+//insert user   
   app.post('/user', (req, res) => {
     userCollection.insertOne(req.body)
       .then(result => {
@@ -55,7 +55,7 @@ MongoClient.connect(connectionString, {
       })
       .catch(error => console.error(error))
   })
-// Update 
+// Update  user
   app.put('/user', (req, res) => {
     userCollection.findOneAndUpdate(
       { nom: req.body.nom },
@@ -76,20 +76,207 @@ MongoClient.connect(connectionString, {
       .catch(error => console.error(error))
   })
 
-  //delete
+  //delete user
   app.delete('/user', (req, res) => {
     userCollection.deleteOne(
       { nom: req.body.nom }
     )
     .then(result => {
+      console.log('//////////////////////////////////DELETE USER/::///////://////////////////////////')
       if (result.deletedCount === 0) {
         return res.json('No user to delete')
       }
+    
       res.json(`Deleted User`)
     })
       .catch(error => console.error(error))
   })
   
+
+  //Crud question 
+
+  const questionCollection = db.collection('question')
+  app.get('/question', (req, res) => {
+    questionCollection.find().toArray()
+    
+        .then(results => {
+         
+         res.render('question.ejs', { questions : results })
+   
+          console.log(results)
+        })
+        .catch(error => console.error(error))
+      
+    })
+
+    //insert question   
+  app.post('/questioninsert', (req, res) => {
+    questionCollection.insertOne(req.body)
+      .then(result => {
+        res.redirect('/question')
+      })
+      .catch(error => console.error(error))
+  })
+
+
+
+// Update  question
+app.put('/questioninsert', (req, res) => {
+  questionCollection.findOneAndUpdate(
+    { description: req.body.description },
+    {
+      $set: {
+        description: req.body.description,
+       
+        datecreation : req.body.datecreation
+      
+
+      }
+    }
+  )
+    .then(result => {es.json('Success')})
+    .catch(error => console.error(error))
+})
+
+//delete question
+app.delete('/questioninsert', (req, res) => {
+  questionCollection.deleteOne(
+    { description: req.body.description }
+  )
+  .then(result => {
+    console.log('//////////////////////////////////DELETE Question/::///////://////////////////////////')
+    if (result.deletedCount === 0) {
+      return res.json('No question to delete')
+    }
+    res.json(`Deleted question`)
+  })
+    .catch(error => console.error(error))
+})
+
+
+
+  //Crud reponse 
+
+  const reponseCollection = db.collection('reponse')
+  app.get('/reponse', (req, res) => {
+    reponseCollection.find().toArray()
+    
+        .then(results => {
+         
+         res.render('reponse.ejs', { reponses : results })
+   
+          console.log(results)
+        })
+        .catch(error => console.error(error))
+      
+    })
+
+    //insert reponse   
+  app.post('/reponseinsert', (req, res) => {
+    reponseCollection.insertOne(req.body)
+      .then(result => {
+        res.redirect('/reponse')
+      })
+      .catch(error => console.error(error))
+  })
+
+
+
+// Update  reponse
+app.put('/reponseinsert', (req, res) => {
+  reponseCollection.findOneAndUpdate(
+    { description: req.body.description },
+    {
+      $set: {
+        description: req.body.description,
+       
+        datecreation : req.body.datecreation
+      
+
+      }
+    }
+  )
+    .then(result => {es.json('Success')})
+    .catch(error => console.error(error))
+})
+
+//delete reponse
+app.delete('/reponseinsert', (req, res) => {
+  reponseCollection.deleteOne(
+    { description: req.body.description }
+  )
+  .then(result => {
+    console.log('//////////////////////////////////DELETE reponse/::///////://////////////////////////')
+    if (result.deletedCount === 0) {
+      return res.json('No reponse to delete')
+    }
+    res.json(`Deleted reponse`)
+  })
+    .catch(error => console.error(error))
+})
+
+
+ //Crud messagerie 
+
+ const messagerieCollection = db.collection('messagerie')
+ app.get('/messagerie', (req, res) => {
+  messagerieCollection.find().toArray()
+   
+       .then(results => {
+        
+        res.render('messagerie.ejs', { messageries : results })
+  
+         console.log(results)
+       })
+       .catch(error => console.error(error))
+     
+   })
+
+   //insert messagerie   
+ app.post('/messagerieinsert', (req, res) => {
+  messagerieCollection.insertOne(req.body)
+     .then(result => {
+       res.redirect('/messagerie')
+     })
+     .catch(error => console.error(error))
+ })
+
+
+
+// Update  messagerie
+app.put('/messagerieinsert', (req, res) => {
+  messagerieCollection.findOneAndUpdate(
+   { message: req.body.message },
+   {
+     $set: {
+      message: req.body.message,
+      object : req.body.object,
+      datecreation: req.body.datecreation,
+      from: req.body.from 
+      
+
+     }
+   }
+ )
+   .then(result => {es.json('Success')})
+   .catch(error => console.error(error))
+})
+
+//delete messagerie
+app.delete('/messagerieinsert', (req, res) => {
+  messagerieCollection.deleteOne(
+   { message: req.body.message }
+ )
+ .then(result => {
+   console.log('//////////////////////////////////DELETE reponse/::///////://////////////////////////')
+   if (result.deletedCount === 0) {
+     return res.json('No messagerie to delete')
+   }
+   res.json(`Deleted messagerie`)
+ })
+   .catch(error => console.error(error))
+})
+
   
   })
   .catch(error => console.error(error))
