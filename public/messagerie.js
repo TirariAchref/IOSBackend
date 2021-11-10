@@ -35,7 +35,7 @@ updatemessagerie.addEventListener('click', _ => {
       method: 'put',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        message: 'hello',
+        message: 'achref',
         object: 'object',
         datecreation: 'datecreation',
         from: 'from'
