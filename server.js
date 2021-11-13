@@ -277,6 +277,68 @@ app.delete('/messagerieinsert', (req, res) => {
    .catch(error => console.error(error))
 })
 
+ //Crud event 
+
+ const eventCollection = db.collection('event')
+ app.get('/event', (req, res) => {
+  eventCollection.find().toArray()
+   
+       .then(results => {
+        
+        res.render('event.ejs', { events : results })
+  
+         console.log(results)
+       })
+       .catch(error => console.error(error))
+     
+   })
+
+   //insert event   
+ app.post('/eventinsert', (req, res) => {
+  eventCollection.insertOne(req.body)
+     .then(result => {
+       res.redirect('/event')
+     })
+     .catch(error => console.error(error))
+ })
+
+
+
+// Update  event
+app.put('/eventinsert', (req, res) => {
+  eventCollection.findOneAndUpdate(
+   { name: req.body.name },
+   {
+     $set: {
+      name: req.body.name,
+      description : req.body.description,
+      money: req.body.money,
+      moneyreached: req.body.moneyreached,
+      datefin: req.body.datefin 
+      
+
+     }
+   }
+ )
+   .then(result => {es.json('Success')})
+   .catch(error => console.error(error))
+})
+
+//delete event
+app.delete('/eventinsert', (req, res) => {
+  eventCollection.deleteOne(
+   { name: req.body.name }
+ )
+ .then(result => {
+   console.log('//////////////////////////////////DELETE reponse/::///////://////////////////////////')
+   if (result.deletedCount === 0) {
+     return res.json('No event to delete')
+   }
+   res.json(`Deleted event`)
+ })
+   .catch(error => console.error(error))
+})
+
   
   })
   .catch(error => console.error(error))

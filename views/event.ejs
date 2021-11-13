@@ -1,0 +1,62 @@
+<!-- question.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MY APP</title>
+  </head>
+
+  <body>
+    <button ><a href="/" >Client</a></button>
+    <button ><a href="question" >QUESTION</a></button>
+    <button ><a href="reponse" >REPONSE</a></button>
+    <button ><a href="messagerie" >MESSAGERIE</a></button>
+    <button ><a href="event" >EVENT</a></button>
+<!-- Crud Question -->
+  <h1>ADD Event</h1>
+
+  <form action="/eventinsert" method="POST">
+  <input type="text" placeholder="name" name="name">
+  <input type="text" placeholder="description" name="description">
+  <input type="text" placeholder="money" name="money">
+  <input type="text" placeholder="moneyreached" name="moneyreached">
+  <input type="text" placeholder="datefin" name="datefin">
+
+
+  <button type="submit">Submit</button>
+</form>
+<div>
+  <h2>Update event</h2>
+  <p>
+  
+  </p>
+  <button id="updateevent">Update event</button>
+</div>
+<div>
+  <h2>Remove event!</h2>
+  
+  <button id="delete-event">Delete event</button>
+  <div id="messageevent"> </div>
+</div>
+
+<h2> Quotes </h2>
+
+<ul class="event">
+  <!-- Loop through quotes -->
+  <% for(var i = 0; i < events.length; i++) {%>
+    <li class="event">
+
+      <span>  <b>name :</b> <%= events[i].name %></span>
+      <b>description :</b> 
+      <span><%= events[i].description %></span>
+      <span>  <b>money :</b> <%= events[i].money %></span>
+      <span>  <b>moneyreached :</b> <%= events[i].moneyreached %></span>
+      <span>  <b>datefin :</b> <%= events[i].datefin %></span>
+    </li>
+  <% } %>
+</ul>
+  
+  <script src="/event.js"></script>
+
+  </body>
+</html>
